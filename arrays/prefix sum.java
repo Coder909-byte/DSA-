@@ -24,4 +24,4 @@ class NumArray {
         return prefix[right] - prefix[left-1];
     }
 }
-
+git
