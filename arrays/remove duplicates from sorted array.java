@@ -55,19 +55,20 @@ class GFG
  
 
 class Solution {
-    public int removeDuplicates(int[] nums) {
+    public boolean check(int[] nums) {
+        int count = 0;
         int n = nums.length;
-        if (n == 0) return 0;
-
-        int res = 1; 
-
-        for (int i = 1; i < n; i++) {
-            if (nums[i] != nums[res - 1]) {
-                nums[res] = nums[i]; 
-                res++;
+        
+        for (int i = 0; i < n; i++) {
+            // Compare current element with the NEXT element
+            // (i + 1) % n cleanly wraps the last element back to index 0
+            if (nums[i] > nums[(i + 1) % n]) {
+                count++;
             }
         }
-
-        return res; 
+        
+        // A sorted and rotated array can have at most ONE point 
+        // where a number is bigger than the next number.
+        return count <= 1;
     }
-}
+} 
